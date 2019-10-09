@@ -34,8 +34,9 @@ var Promise = d3.json("planets.json")
 Promise.then(
     function(Data)
     {
-        console.log("Data",Data);
-        ImgPlanets(Data)
+      console.log("Data",Data);
+        ImgPlanets(Data);
+        list(Data);
     },
     function(err)
     { 
@@ -55,7 +56,22 @@ var ImgPlanets = function(planets)
      })
            
            }
-    
+
+var list = function(Data){
+             d3.select("#B4")
+             .append("ol")
+             .selectAll("li")
+             .data(Data)
+             .enter()
+             .append("li")
+             .text(function(d)
+                  {
+                 console.log(d.name)
+                 return d.name
+             });}
+
+       
+            
 
 
 
